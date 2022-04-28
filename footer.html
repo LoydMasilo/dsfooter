@@ -3,6 +3,7 @@
 <head>
     <script>
         function subst() {
+			
             var vars={};
             var x=window.location.search.substring(1).split('&');
             for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
@@ -12,19 +13,24 @@
             for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
             }
 
+            var f = document.getElementById('footer');
             if (vars['page'] == vars['topage'] && vars['topage']> 1) {
 				document.getElementById("pdfFooter").parentElement.removeChild(document.getElementById("pdfFooter"));
-				
+				//f.style.display = 'block';
             }
+			else
+			{
+				//f.style.display = 'none';
+			}
         }
     </script>
 </head>
 <body style="border:0; margin: 0;" onload="subst()">
-    <div id="footer" width="100%">
-        <table class="border-1" width="40%" style="float:left; margin-top:1%">
+    <div id="footer" width="100%" >
+       <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
             <thead>
                 <tr>
-                    <th width="100%" colspan="2" style="align-content:center">
+                    <th colspan="2" style="align-content:center">
                         <b>AUTHORIZED BY</b>
                     </th>
                 </tr>
@@ -48,8 +54,65 @@
                 </tr>
             </tbody>
         </table>
+        <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
+            <thead>
+                <tr>
+                    <th colspan="2" style="align-content:center">
+                        <b>SECURITY</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="30%" class="tdleft">
+                        <strong>NAME:</strong> <br /><br />
+                        <strong>MINE NO:</strong> <br /><br />
+                        <strong>SIGN:</strong> <br /><br />
+                        <strong>DATE:</strong>
+                    </td>
+
+                    <td width="70%" class="tdleft">
+                        ______________________<br /><br />
+                        ______________________<br /><br />
+                        ______________________<br /><br />
+                        ______________________
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table  width="30%" style="border: 1px solid black;float:left;margin: 1%;">
+             <thead>
+                 <tr>
+                     <th colspan="2" style="align-content:center">
+                         <b>REPAIRER REPRESENTATIVE</b>
+                     </th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td width="40%" class="tdleft">
+                         <strong>NAME:</strong> <br /><br />
+                         <strong>CONTACT NO:</strong> <br /><br />
+                         <strong>VEHICLE NO:</strong> <br /><br />
+                         <strong>ID NO:</strong> <br /><br />
+                         <strong>SIGN:</strong> <br /><br />
+                         <strong>DATE:</strong>
+                     </td>
+
+                     <td width="60%" class="tdleft">
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________<br /><br />
+                         ____________________
+                     </td>
+                 </tr>
+             </tbody>
+         </table>
+
     </div>
-    <table style="border-bottom: 1px solid black; width: 100%">
+    <table id="pdfFooter" style="border-bottom: 1px solid black; width: 100%">
         <tr>
             <td class="section"></td>
             <td style="text-align:right">
