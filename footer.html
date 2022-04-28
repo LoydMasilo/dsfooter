@@ -6,7 +6,7 @@
 		
 	    
         function subst() {
-			var f = document.getElementById('footer');
+	var f = document.getElementById('footer');
 			
             var vars={};
             var x=window.location.search.substring(1).split('&');
@@ -18,9 +18,9 @@
             }
 
             if (vars['page'] == vars['topage'] && vars['topage']> 1) {
-				document.getElementById("pdfFooter").parentElement.removeChild(document.getElementById("pdfFooter"));
+				
 				f.style.display = 'block';
-				alert("Hello! I am an alert box!!");
+				alert(vars['topage']);
             }
 			else
 			{
