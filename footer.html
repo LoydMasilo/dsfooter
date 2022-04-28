@@ -3,18 +3,52 @@
 <head>
     <script>
         function subst() {
-          var vars={};
-          var x=window.location.search.substring(1).split('&');
-          for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
-          var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
-          for (var i in x) {
+            var vars={};
+            var x=window.location.search.substring(1).split('&');
+            for (var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for (var i in x) {
             var y = document.getElementsByClassName(x[i]);
             for (var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
-          }
+            }
+
+            if (vars['page'] == vars['topage'] && vars['topage']> 1) {
+				document.getElementById("pdfFooter").parentElement.removeChild(document.getElementById("pdfFooter"));
+				$("#footer").css("display", "block");
+            }
         }
     </script>
 </head>
 <body style="border:0; margin: 0;" onload="subst()">
+    <div id="footer" width="100%" style="display: none">
+        <table class="border-1" width="40%" style="float:left; margin-top:1%">
+            <thead>
+                <tr>
+                    <th width="100%" colspan="2" style="align-content:center">
+                        <b>AUTHORIZED BY</b>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="30%" class="tdleft">
+                        <strong>NAME:</strong> <br /><br />
+                        <strong>MINE NO:</strong> <br /><br />
+                        <strong>SIGN:</strong> <br /><br />
+                        <strong>DATE:</strong>
+
+                    </td>
+                    <td width="70%" class="tdleft">
+                        _______________________<br /><br />
+                        _______________________<br /><br />
+                        _______________________<br /><br />
+                        _______________________
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <table style="border-bottom: 1px solid black; width: 100%">
         <tr>
             <td class="section"></td>
